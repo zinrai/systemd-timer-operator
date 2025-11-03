@@ -1,0 +1,12 @@
+Unit: |
+  Description=Hello World Timer Example
+
+Service: |
+  Type=oneshot
+  ExecStart=/usr/bin/echo "Hello from systemd-timer-operator!"
+
+Timer: |
+  OnCalendar=minutely
+
+TimerInstall: |
+  WantedBy=timers.target

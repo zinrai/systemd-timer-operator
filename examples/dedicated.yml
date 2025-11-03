@@ -1,0 +1,19 @@
+ServiceUnit: |
+  Description=Backup script that requires network
+  After=network-online.target
+  Wants=network-online.target
+
+TimerUnit: |
+  Description=Daily backup timer
+
+Service: |
+  Type=oneshot
+  ExecStart=/usr/local/bin/backup.sh
+  User=backup
+
+Timer: |
+  OnCalendar=daily
+  Persistent=true
+
+TimerInstall: |
+  WantedBy=timers.target
