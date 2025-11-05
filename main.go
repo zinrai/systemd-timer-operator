@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-const version = "0.1.0"
+const version = "0.2.0"
 
 func main() {
 	if err := run(); err != nil {
@@ -37,6 +37,13 @@ func run() error {
 		yamlPath := os.Args[2]
 		return Disable(yamlPath)
 
+	case "generate":
+		if len(os.Args) < 3 {
+			return fmt.Errorf("usage: systemd-timer-operator generate <yaml-file>")
+		}
+		yamlPath := os.Args[2]
+		return Generate(yamlPath)
+
 	case "version":
 		fmt.Printf("systemd-timer-operator version %s\n", version)
 		return nil
@@ -58,10 +65,11 @@ Usage:
   systemd-timer-operator <subcommand> [arguments]
 
 Subcommands:
-  enable <yaml-file>   Generate unit files, deploy them, and enable the timer
-  disable <yaml-file>  Disable the timer and remove unit files
-  version              Show version information
-  help                 Show this help message
+  enable <yaml-file>    Generate unit files, deploy them, and enable the timer
+  disable <yaml-file>   Disable the timer and remove unit files
+  generate <yaml-file>  Generate unit files in the current directory
+  version               Show version information
+  help                  Show this help message
 `
 	fmt.Print(usage)
 }

@@ -41,6 +41,12 @@ Disable a timer:
 $ sudo systemd-timer-operator disable examples/basic.yml
 ```
 
+Generate unit files in the current directory:
+
+```bash
+$ systemd-timer-operator generate examples/basic.yml
+```
+
 For YAML configuration examples, see the `examples/` directory.
 
 ## YAML Configuration Reference
