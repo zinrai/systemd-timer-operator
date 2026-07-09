@@ -4,17 +4,8 @@ import (
 	"fmt"
 )
 
-// Disable reads YAML, disables the timer, and removes unit files
+// Disable disables the timer and removes unit files
 func Disable(yamlPath string) error {
-	// Load YAML to get task name (validation not strictly required for disable)
-	config, err := LoadConfig(yamlPath)
-	if err != nil {
-		return err
-	}
-
-	// Suppress unused variable warning (we load config for future extensibility)
-	_ = config
-
 	// Extract task name from YAML file name
 	taskName := GetTaskName(yamlPath)
 
