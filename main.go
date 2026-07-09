@@ -5,7 +5,12 @@ import (
 	"os"
 )
 
-const version = "0.2.0"
+// Injected at build time via goreleaser ldflags (see .goreleaser.yaml).
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+)
 
 func main() {
 	if err := run(); err != nil {
@@ -45,7 +50,7 @@ func run() error {
 		return Generate(yamlPath)
 
 	case "version":
-		fmt.Printf("systemd-timer-operator version %s\n", version)
+		fmt.Printf("systemd-timer-operator version %s (commit %s, built %s)\n", version, commit, date)
 		return nil
 
 	case "help":
