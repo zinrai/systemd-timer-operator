@@ -21,12 +21,6 @@ This tool reduces this workflow to a single YAML file and a single command, whil
 - **Full systemd access**: All systemd features available via official documentation
 - **Single command operation**: One command to enable or disable timers
 
-## Installation
-
-```bash
-$ go install github.com/zinrai/systemd-timer-operator@latest
-```
-
 ## Usage
 
 Enable a timer:
